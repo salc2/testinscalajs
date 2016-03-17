@@ -1,18 +1,13 @@
 import sbt.Keys._
-lazy val commonSettings = Seq(
-  organization := "com.chucho",
-  version := "0.1.0"
-)
 
 lazy val root = project.in(file(".")).
-  aggregate(testJS, testJVM).
+  aggregate(testJS.enablePlugins(ScalaJSPlugin), testJVM).
   settings(
     publish := {},
     publishLocal := {}
   )
 
 lazy val test = crossProject.in(file(".")).
-  settings(commonSettings: _*).
   settings(
     name := "Scala.js Sample",
 		organization := "com.chucho",
@@ -23,9 +18,11 @@ lazy val test = crossProject.in(file(".")).
 	).
 	jsSettings(
 		libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.0"
-	).enablePlugins(ScalaJSPlugin)
+	)
 
 	lazy val testJVM = test.jvm
 	lazy val testJS = test.js
-
-
+/*
+artifactPath in fastOptJS :=
+	(resourceManaged in testJVM in Compile).value /
+		((moduleName in fastOptJS).value + "-fastopt.js")*/
