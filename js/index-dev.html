@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>The Scala.js Tutorial</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.23/p5.js"></script>
+    <style>
+      #canvas-container {
+          margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+  <div id="canvas-container">
+  </div>
+    <!-- Include Scala.js compiled code -->
+    <script type="text/javascript" src="./target/scala-2.10/scala-js-sample-fastopt.js"></script>
+    <!-- Run tutorial.webapp.TutorialApp -->
+    <script type="text/javascript">
+      tutorial.webapp.TutorialApp().main();
+    </script>
+  </body>
+</html>
